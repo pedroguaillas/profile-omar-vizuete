@@ -1,0 +1,116 @@
+---
+// TODO: update with real show data
+const shows = [
+  {
+    date:  { day: '15', month: 'JUL', year: '2025' },
+    name:  'Nombre del Evento',
+    venue: 'Nombre del Recinto',
+    city:  'Ciudad, País',
+    url:   '#',
+    sold:  false,
+  },
+  {
+    date:  { day: '22', month: 'AGO', year: '2025' },
+    name:  'Festival de Música',
+    venue: 'Teatro / Estadio',
+    city:  'Ciudad, País',
+    url:   '#',
+    sold:  false,
+  },
+  {
+    date:  { day: '05', month: 'SEP', year: '2025' },
+    name:  'Concierto Especial',
+    venue: 'Auditorio Principal',
+    city:  'Ciudad, País',
+    url:   '#',
+    sold:  true,
+  },
+];
+---
+<section id="shows" class="py-28 md:py-36 px-6" style="background:#0c0c0c;">
+  <div class="max-w-6xl mx-auto">
+    <p class="section-tag">Agenda</p>
+    <span class="gold-line"></span>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+      <h2 class="section-title">Próximos Shows</h2>
+      <a href="#contact" class="btn-outline inline-flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Contratar para evento
+      </a>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      {shows.map(show => (
+        <div class="show-row">
+          <!-- Date block -->
+          <div class="date-block">
+            <span class="date-day">{show.date.day}</span>
+            <span class="date-month">{show.date.month}</span>
+            <span class="date-year">{show.date.year}</span>
+          </div>
+
+          <!-- Info -->
+          <div class="flex-1 min-w-0">
+            <p class="show-name">{show.name}</p>
+            <p class="show-meta">{show.venue} — {show.city}</p>
+          </div>
+
+          <!-- CTA -->
+          {show.sold ? (
+            <span class="show-sold">Agotado</span>
+          ) : (
+            <a href={show.url} target="_blank" rel="noopener noreferrer"
+               class="btn-primary" style="white-space:nowrap;font-size:0.7rem;padding:0.6rem 1.25rem;">
+              Entradas
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- No shows fallback (hidden when shows exist) -->
+    <!-- <p class="text-center text-gray-600 py-12">Próximamente se anunciarán nuevas fechas. ¡Síguelo en redes para no perderte nada!</p> -->
+  </div>
+</section>
+
+<style>
+  .show-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #1a1a1a;
+    background: #111;
+    transition: border-color 0.2s;
+  }
+  .show-row:hover { border-color: rgba(201,168,76,0.25); }
+
+  .date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 52px;
+    border-right: 1px solid #2a2a2a;
+    padding-right: 1.5rem;
+  }
+  .date-day   { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: #C9A84C; line-height: 1; }
+  .date-month { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; color: #6b7280; margin-top: 2px; }
+  .date-year  { font-size: 0.6rem;  color: #4b5563; }
+
+  .show-name { font-size: 1rem; font-weight: 600; color: #f3f4f6; }
+  .show-meta { font-size: 0.8rem; color: #6b7280; margin-top: 3px; }
+
+  .show-sold {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
+    border: 1px solid #2a2a2a;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+  }
+</style>

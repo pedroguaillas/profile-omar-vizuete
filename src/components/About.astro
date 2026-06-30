@@ -1,0 +1,98 @@
+---
+import aboutImg from '../assets/about.jpg';
+
+const stats = [
+  { number: '10+', label: 'Años en escena' },
+  { number: '50K+', label: 'Seguidores' },
+  { number: '100+', label: 'Presentaciones' },
+  { number: '5+', label: 'Producciones' },
+];
+---
+<section id="about" class="py-28 md:py-36 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Photo side -->
+      <div class="relative reveal">
+        <div class="artist-photo-frame">
+          <img src={aboutImg.src} alt="Omar Vizuete" width={aboutImg.width} height={aboutImg.height} />
+        </div>
+        <!-- Decorative gold border offset -->
+        <div class="absolute -bottom-4 -right-4 w-full h-full border border-gold/30 pointer-events-none"
+             style="border-color:rgba(201,168,76,0.3);"></div>
+        <!-- Stats ribbon -->
+        <div class="grid grid-cols-2 gap-px mt-px reveal-group" style="background:#222;">
+          {stats.map(s => (
+            <div class="stat-card">
+              <p class="stat-number">{s.number}</p>
+              <p class="stat-label">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div>
+        <p class="section-tag reveal">Su historia</p>
+        <span class="gold-line reveal"></span>
+        <h2 class="section-title mb-6 reveal">
+          La música es<br>
+          <em style="color:#C9A84C;">su legado.</em>
+        </h2>
+        <div class="reveal">
+        <p class="text-gray-400 leading-relaxed mb-4">
+          Omar Vizuete fue un artista con una propuesta musical única que fusionó géneros y emociones en cada nota. Con años de experiencia en tarimas y estudios de grabación, consolidó un sonido propio que conectó con el público de forma genuina.
+        </p>
+        <p class="text-gray-400 leading-relaxed mb-8">
+          Su música nació de vivencias reales, de historias que hablan al corazón. Cada canción que dejó es un universo en sí mismo — honesto, profundo y lleno de vida. Hoy su arte sigue vivo en quienes lo amaron.
+        </p>
+        </div>
+
+        <blockquote class="border-l-2 pl-5 italic text-gray-300 mb-8 reveal" style="border-color:#C9A84C;">
+          "La música no tiene fronteras, solo tiene sentimientos."
+          <cite class="block text-sm text-gray-500 mt-2 not-italic">— Omar Vizuete</cite>
+        </blockquote>
+
+        <div class="flex flex-wrap gap-3 reveal">
+          <a href="#music"   class="btn-primary">Escuchar su música</a>
+          <a href="#gallery" class="btn-outline">Ver galería</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .artist-photo-frame {
+    position: relative;
+    background: #111;
+    overflow: hidden;
+  }
+  .artist-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 3/4;
+  }
+
+  .stat-card {
+    background: #111;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #C9A84C;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+</style>
